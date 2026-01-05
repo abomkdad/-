@@ -14,8 +14,8 @@
         :root {
             --bg-deep: #050505;        
             --card-surface: #121212;   
-            --gold-primary: #D4AF37;   
-            --gold-light: #F3E5AB;     
+            --gold-primary: #D4AF37;    
+            --gold-light: #F3E5AB;      
             --text-main: #FFFFFF;
             --text-secondary: #AAAAAA;
         }
@@ -339,7 +339,7 @@
                 <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
             </a>
             <a href="https://www.instagram.com/perfume.mad/" target="_blank" class="social-icon" aria-label="Instagram">
-                <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"/></svg>
             </a>
             <a href="https://www.facebook.com/s0524033442/" target="_blank" class="social-icon" aria-label="Facebook">
                 <svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
@@ -358,50 +358,52 @@
     </a>
 
     <script>
-        // --- البيانات ---
+        // --- البيانات: تمت إضافة الروابط المباشرة الدقيقة (DirectLink) ---
         const branches = [
             // الشمال والساحل
-            { id: 1, nameAr: "دالية الكرمل", nameHe: "דלית אל כרמל", phone: "0525592293", waze: "Mad Perfume Daliyat al-Karmel", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 2, nameAr: "كفر مندا", nameHe: "כפר מאנדא", phone: "0505102019", waze: "Mad Perfume Kafr Manda", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 3, nameAr: "الرمله", nameHe: "רמלה", phone: "0527035370", waze: "Mad Perfume Ramla", hoursAr: "الأحد-الخميس: 09:00-20:00<br>الجمعة: 08:00-21:00", hoursHe: "א'-ה': 09:00-20:00<br>שישי: 08:00-21:00" },
-            { id: 4, nameAr: "تل أبيب - يافا", nameHe: "תל אביב-יפו", phone: "0527035370", waze: "Mad Perfume Tel Aviv Raziel", hoursAr: "الأحد-الخميس: 09:00-20:00<br>الجمعة والسبت: مفتوح", hoursHe: "א'-ה': 09:00-20:00<br>שישי ושבת: פתוח" },
-            { id: 12, nameAr: "حيفا", nameHe: "חיפה", phone: "0506164130", waze: "Mad Perfume Haifa", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 14, nameAr: "الخضيرة", nameHe: "חדרה", phone: "0523953681", waze: "Mad Perfume Hadera Mall", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 7, nameAr: "هيرتسيليا", nameHe: "הרצליה", phone: "0522438398", waze: "Mad Perfume Herzliya", hoursAr: "الأحد-الخميس: 08:00-20:00<br>السبت: مغلق ❌", hoursHe: "א'-ה': 08:00-20:00<br>שבת: סגור ❌" },
+            { id: 12, nameAr: "حيفا", nameHe: "חיפה", phone: "0506164130", directLink: "https://www.waze.com/en/live-map/directions/%D7%97%D7%99%D7%A4%D7%94?navigate=yes&place=99506.49&utm_campaign=default&utm_medium=lm_share_location&utm_source=waze_website", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
+            { id: 4, nameAr: "تل أبيب - يافا", nameHe: "תל אביב-יפו", phone: "0527035370", directLink: "https://ul.waze.com/ul?place=EipEYXZpZCBSYXppJ2VsIFN0IDIzLCBUZWwgQXZpdi1ZYWZvLCBJc3JhZWwiMBIuChQKEgntsiS-vkwdFREv7GII8cikqxAXKhQKEgmHZ_csvEwdFRFa3i1EzNr69g&ll=32.05510440%2C34.75639440&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location", hoursAr: "الأحد-الأربعاء: 10:00-22:00<br>الخميس-الجمعة: 10:00-00:00<br>السبت: 10:00-22:00", hoursHe: "א'-ד': 10:00-22:00<br>ה'-ו': 10:00-00:00<br>שבת: 10:00-22:00" },
+            { id: 3, nameAr: "الرمله", nameHe: "רמלה", phone: "0527035370", directLink: "https://www.waze.com/ul?ll=31.9260024,34.8763619&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-21:00<br>الجمعة: 09:00-18:00<br>السبت: 14:00-21:00", hoursHe: "א'-ה': 09:00-21:00<br>שישי: 09:00-18:00<br>שבת: 14:00-21:00" },
+            { id: 7, nameAr: "هيرتسيليا", nameHe: "הרצליה", phone: "0522438398", directLink: "https://waze.com/ul?q=Sokolov+14+Herzliya&navigate=yes", hoursAr: "الأحد-الخميس: 10:00-20:00<br>الجمعة والسبت: مغلق ❌", hoursHe: "א'-ה': 10:00-20:00<br>שישי ושבת: סגור ❌" },
+            { id: 14, nameAr: "الخضيرة", nameHe: "חדרה", phone: "0523953681", directLink: "https://www.waze.com/ul?ll=32.4417243,34.8950613&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
+            { id: 24, nameAr: "يركا", nameHe: "ירכא", phone: "0546842420", directLink: "https://www.waze.com/ul?ll=32.947444,35.1740662&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
+            { id: 21, nameAr: "طمرة", nameHe: "טמרה", phone: "0505830733", directLink: "https://www.waze.com/ul?ll=32.8573682,35.1745076&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
+            { id: 23, nameAr: "جديدة المكر", nameHe: "ג׳דידה אלמכר", phone: "0508683838", directLink: "https://www.waze.com/ul?ll=32.9323979,35.1576085&navigate=yes", hoursAr: "يومياً: 11:00 - 21:00", hoursHe: "כל יום: 11:00 - 21:00" },
+            { id: 22, nameAr: "سخنين", nameHe: "סח'נין", phone: "0525335571", directLink: "https://www.waze.com/ul?ll=32.8620192,35.2982376&navigate=yes", hoursAr: "يومياً: 10:30 - 22:30", hoursHe: "כל יום: 10:30 - 22:30" },
+            { id: 2, nameAr: "كفر مندا", nameHe: "כפר מאנדא", phone: "0505102019", directLink: "https://ul.waze.com/ul?ll=32.80894429%2C35.26172519&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
+            { id: 1, nameAr: "دالية الكرمل", nameHe: "דלית אל כרמל", phone: "0525592293", directLink: "https://waze.com/ul?q=Kiwi%20store%20Daliyat%20al-Karmel&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
 
             // القدس
-            { id: 9, nameAr: "القدس - صلاح الدين", nameHe: "ירושלים - סלאח א-דין", phone: "0545697644", waze: "Mad Perfume Jerusalem Salah ad-Din", hoursAr: "الأحد-الخميس: 09:00-19:30<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-19:30<br>שישי: סגור ❌" },
-            { id: 10, nameAr: "القدس - سلطان سليمان", nameHe: "ירושלים - סולטאן סולימאן", phone: "0522380119", waze: "Mad Perfume Jerusalem Sultan Suleiman", hoursAr: "الأحد-الخميس: 09:00-19:30<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-19:30<br>שישי: סגור ❌" },
-            { id: 11, nameAr: "بيت حنينا", nameHe: "בית חנינא", phone: "0538318312", waze: "Mad Perfume Beit Hanina", hoursAr: "الأحد-الخميس: 09:00-21:00<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-21:00<br>שישי: סגור ❌" },
+            { id: 9, nameAr: "القدس - صلاح الدين", nameHe: "ירושלים - סלאח א-דין", phone: "0545697644", directLink: "https://www.waze.com/ul?ll=31.7838104,35.236511&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-19:30<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-19:30<br>שישי: סגור ❌" },
+            { id: 11, nameAr: "بيت حنينا", nameHe: "בית חנינא", phone: "0538318312", directLink: "https://ul.waze.com/ul?ll=31.84270095%2C35.22864819&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location", hoursAr: "الأحد-الخميس: 09:00-21:00<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-21:00<br>שישי: סגור ❌" },
 
             // الجنوب
-            { id: 5, nameAr: "بئر السبع", nameHe: "באר שבע", phone: "0548809957", waze: "Mad Perfume Beer Sheva", hoursAr: "يومياً: 09:00 - 20:00", hoursHe: "כל השבוע: 09:00 - 20:00" },
-            { id: 6, nameAr: "رهط", nameHe: "רהט", phone: "0505841596", waze: "Mad Perfume Rahat", hoursAr: "الأحد-الخميس: 09:00-20:00", hoursHe: "א'-ה': 09:00-20:00" },
+            { id: 5, nameAr: "بئر السبع", nameHe: "באר שבע", phone: "0548809957", directLink: "https://www.waze.com/ul?ll=31.2454066,34.7994449&navigate=yes", hoursAr: "يومياً: 09:00 - 20:00", hoursHe: "כל השבוע: 09:00 - 20:00" },
+            { id: 6, nameAr: "رهط", nameHe: "רהט", phone: "0505841596", directLink: "https://www.waze.com/ul?ll=31.393133,34.7668897&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-20:00", hoursHe: "א'-ה': 09:00-20:00" },
 
-            // المثلث والجليل
-            { id: 18, nameAr: "أم الفحم", nameHe: "אום אלפחם", phone: "0506164130", waze: "Mad Perfume Umm al-Fahm", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 19, nameAr: "العفولة", nameHe: "עפולה", phone: "0542144255", waze: "Mad Perfume Afula", hoursAr: "الأحد-الخميس: 09:00-22:00<br>السبت: مغلق ❌", hoursHe: "א'-ה': 09:00-22:00<br>שבת: סגור ❌" },
-            { id: 20, nameAr: "الناصرة", nameHe: "נצרת", phone: "0545307980", waze: "Mad Perfume Nazareth", hoursAr: "يومياً: 09:00 - 22:00", hoursHe: "כל השבוע: 09:00 - 22:00" },
-            { id: 25, nameAr: "طبريا", nameHe: "טבריה", phone: "046112266", waze: "Mad Perfume Tiberias", hoursAr: "يومياً: 09:00 - 21:00<br>السبت: مغلق ❌", hoursHe: "כל השבוע: 09:00 - 21:00<br>שבת: סגור ❌" },
+            // المثلث
+            { id: 18, nameAr: "أم الفحم", nameHe: "אום אלפחם", phone: "0506164130", directLink: "https://www.waze.com/ul?ll=32.5206069,35.1555539&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
+            { id: 19, nameAr: "العفولة", nameHe: "עפולה", phone: "0542144255", directLink: "https://www.waze.com/ul?ll=32.6115685,35.2868666&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-22:00<br>السبت: مغلق ❌", hoursHe: "א'-ה': 09:00-22:00<br>שבת: סגור ❌" },
+            { id: 20, nameAr: "الناصرة", nameHe: "נצרת", phone: "0545307980", directLink: "https://www.waze.com/ul?ll=32.6954537,35.2980894&navigate=yes", hoursAr: "يومياً: 09:00 - 22:00", hoursHe: "כל השבוע: 09:00 - 22:00" },
+            { id: 15, nameAr: "باقة الغربية", nameHe: "באקה אלג׳רבייה", phone: "0536440073", directLink: "https://www.waze.com/ul?ll=32.4204461,35.0437769&navigate=yes", hoursAr: "يومياً: 10:00 - 23:00", hoursHe: "כל יום: 10:00 - 23:00" },
+            { id: 17, nameAr: "كفر قرع", nameHe: "כפר קרע", phone: "0506164130", directLink: "https://www.waze.com/ul?ll=32.4984529,35.0644492&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
+            { id: 8, nameAr: "كفر قاسم", nameHe: "כפר קאסם", phone: "0522438398", directLink: "https://www.waze.com/ul?ll=32.1168851,34.9698127&navigate=yes", hoursAr: "يومياً: 11:00 - 23:00", hoursHe: "כל יום: 11:00 - 23:00" },
+            { id: 16, nameAr: "الطيبة", nameHe: "טייבה", phone: "0523953681", directLink: "https://www.waze.com/ul?q=Helmi%20Square%20Taibeh&navigate=yes", hoursAr: "يومياً: 10:00 - 23:00", hoursHe: "כל יום: 10:00 - 23:00" },
+
+            // آخرون
+            { id: 25, nameAr: "طبريا", nameHe: "טבריה", phone: "046112266", directLink: "https://www.waze.com/ul?ll=32.7878568,35.5393736&navigate=yes", hoursAr: "يومياً: 09:00 - 21:00<br>السبت: مغلق ❌", hoursHe: "כל השבוע: 09:00 - 21:00<br>שבת: סגור ❌" },
+            { id: 26, nameAr: "مجدل شمس", nameHe: "מג'דל שמס", phone: "0508514202", directLink: "https://www.waze.com/ul?ll=33.2669846,35.7671611&navigate=yes", hoursAr: "يومياً: 12:00 - 21:00", hoursHe: "כל יום: 12:00 - 21:00" },
+            { id: 13, nameAr: "بقعاثا", nameHe: "בקעאתה", phone: "0508514202", directLink: "https://www.waze.com/ul?q=As'ad%20Kanj%20Square%20Buq'ata&navigate=yes", hoursAr: "يومياً: 12:00 - 21:00", hoursHe: "כל יום: 12:00 - 21:00" },
             
-            // باقي الفروع
-            { id: 8, nameAr: "كفر قاسم", nameHe: "כפר קאסם", phone: "0522438398", waze: "Mad Perfume Kafr Qasim", hoursAr: "يومياً: 11:00 - 23:00", hoursHe: "כל יום: 11:00 - 23:00" },
-            { id: 13, nameAr: "بقعاثا", nameHe: "בקעאתה", phone: "0508514202", waze: "Mad Perfume Buq'ata", hoursAr: "يومياً: 12:00 - 21:00", hoursHe: "כל יום: 12:00 - 21:00" },
-            { id: 15, nameAr: "باقة الغربية", nameHe: "באקה אלג׳רבייה", phone: "0536440073", waze: "Mad Perfume Baqa al-Gharbiyye", hoursAr: "يومياً: 10:00 - 23:00", hoursHe: "כל יום: 10:00 - 23:00" },
-            { id: 16, nameAr: "الطيبة", nameHe: "טייבה", phone: "0523953681", waze: "Mad Perfume Tayibe", hoursAr: "يومياً: 10:00 - 23:00", hoursHe: "כל יום: 10:00 - 23:00" },
-            { id: 17, nameAr: "كفر قرع", nameHe: "כפר קרע", phone: "0506164130", waze: "Mad Perfume Kafr Qara", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 21, nameAr: "طمرة", nameHe: "טמרה", phone: "0505830733", waze: "Mad Perfume Tamra", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 22, nameAr: "سخنين", nameHe: "סח'נין", phone: "0525335571", waze: "Mad Perfume Sakhnin", hoursAr: "يومياً: 10:30 - 22:30", hoursHe: "כל יום: 10:30 - 22:30" },
-            { id: 23, nameAr: "جديدة المكر", nameHe: "ג׳דידה אלמכר", phone: "0508683838", waze: "Mad Perfume Jadeidi-Makr", hoursAr: "يومياً: 11:00 - 21:00", hoursHe: "כל יום: 11:00 - 21:00" },
-            { id: 24, nameAr: "يركا", nameHe: "ירכא", phone: "0546842420", waze: "Mad Perfume Yarka", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 26, nameAr: "مجدل شمس", nameHe: "מג'דל שמס", phone: "0508514202", waze: "Mad Perfume Majdal Shams", hoursAr: "يومياً: 12:00 - 21:00", hoursHe: "כל יום: 12:00 - 21:00" },
-            
-            // الضفة الغربية
+            // الضفة الغربية (روابط عامة للمدن بسبب محدودية الخريطة)
+            { id: 29, nameAr: "رام الله - الأيكون مول", nameHe: "ראמאללה - קניון אייקון", phone: "0592592502", directLink: "https://waze.com/ul?q=Icon%20Mall%20Ramallah&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
+            { id: 291, nameAr: "رام الله - شارع الإرسال (مقابل KFC)", nameHe: "ראמאללה - רחוב אל-אירסאל (מול KFC)", phone: "0592592502", directLink: "https://waze.com/ul?q=KFC%20Al-Irsal%20Ramallah&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
+            { id: 31, nameAr: "قلقيلية - شارع التربية (مقابل مؤسسة مهنا)", nameHe: "קלקוליה - רחוב החינוך (מול מוסד מהנא)", phone: "0595800150", directLink: "https://waze.com/ul?q=Mahanna%20Store%20Qalqilya&navigate=yes", hoursAr: "10:00-22:00 | الجمعة: 10:00-18:00", hoursHe: "10:00-22:00 | שישי: עד 18:00" },
             { id: 27, nameAr: "نابلس - بيت وزن", nameHe: "שכם - בית וזן", phone: "0598094672", waze: "Mad Perfume Nablus", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
+            { id: 271, nameAr: "نابلس - شارع يافا", nameHe: "שכם - רחוב יפו", phone: "0598094672", directLink: "https://waze.com/ul?q=Jaffa%20Street%20Nablus&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
+            { id: 272, nameAr: "نابلس - سيتي مول", nameHe: "שכם - סיטי מול", phone: "0598094672", directLink: "https://waze.com/ul?q=Nablus%20City%20Mall&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
             { id: 28, nameAr: "طولكرم", nameHe: "טול כרם", phone: "0595552670", waze: "Mad Perfume Tulkarm", hoursAr: "10:00-20:00 | الجمعة: 10:00-18:00", hoursHe: "10:00-20:00 | שישי: עד 18:00" },
-            { id: 29, nameAr: "رام الله", nameHe: "ראמאללה", phone: "0592592502", waze: "Mad Perfume Ramallah", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
             { id: 30, nameAr: "بيت لحم", nameHe: "בית לחם", phone: "0599353940", waze: "Mad Perfume Bethlehem", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 31, nameAr: "قلقيلية", nameHe: "קלקוליה", phone: "0595800150", waze: "Mad Perfume Qalqilya", hoursAr: "10:00-22:00 | الجمعة: 10:00-18:00", hoursHe: "10:00-22:00 | שישי: עד 18:00" },
             { id: 32, nameAr: "أريحا", nameHe: "יריחו", phone: "0592592502", waze: "Mad Perfume Jericho", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" }
         ];
 
@@ -444,7 +446,14 @@
             branches.forEach((branch, index) => {
                 const name = lang === 'he' ? branch.nameHe : branch.nameAr;
                 const hours = lang === 'he' ? branch.hoursHe : branch.hoursAr;
-                const wazeLink = `https://waze.com/ul?q=${encodeURIComponent(branch.waze)}&navigate=yes`;
+                
+                // استخدام الرابط المباشر إذا وجد، وإلا استخدام البحث
+                let wazeLink = "";
+                if (branch.directLink) {
+                    wazeLink = branch.directLink;
+                } else {
+                    wazeLink = `https://waze.com/ul?q=${encodeURIComponent(branch.waze)}&navigate=yes`;
+                }
                 
                 const delay = index * 0.05; 
 
