@@ -3,622 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAD PARFUMEUR | Locations</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&family=Tajawal:wght@300;500;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>MAD PARFUMEUR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- تعريف الألوان --- */
-        :root {
-            --bg-deep: #050505;         
-            --card-surface: #121212;    
-            --gold-primary: #D4AF37;     
-            --gold-light: #F3E5AB;       
-            --text-main: #FFFFFF;
-            --text-secondary: #AAAAAA;
-            --whatsapp-green: #25D366;
-            --whatsapp-dark: #128C7E;
+        /* === 1. LUXURY THEME VARIABLES === */
+        :root { 
+            --bg: #0a0a0a; 
+            --card-bg: #161616; 
+            --gold: #d4af37; 
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #b8860b 100%);
+            --text: #ffffff; 
+            --sub-text: #888; 
+            --waze-bg: #1f2d3d; 
+            --wa-bg: #25D366;
         }
+        
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); padding-bottom: 50px; }
+        a { text-decoration: none; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-        body {
-            font-family: 'Cairo', 'Tajawal', sans-serif;
-            background-color: var(--bg-deep);
-            background-image: radial-gradient(circle at top, #1a1a1a 0%, #050505 60%);
-            color: var(--text-main);
-            direction: rtl;
-            padding-bottom: 100px;
-            min-height: 100vh;
-        }
-
-        /* --- الهيدر --- */
+        /* === 2. COMPACT HEADER (NEW DESIGN) === */
         header {
-            padding: 40px 20px 10px;
             text-align: center;
-        }
-
-        .logo-img {
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.15));
-            transition: transform 0.3s ease;
-        }
-        
-        .logo-img:hover { transform: scale(1.02); }
-
-        .slogan {
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 20px;
-        }
-
-        /* --- زر الموقع الرسمي الجديد --- */
-        .website-btn-container {
-            margin-bottom: 25px;
-        }
-
-        .website-btn {
-            display: inline-block;
-            text-decoration: none;
-            color: var(--gold-primary);
-            border: 1px solid var(--gold-primary);
-            padding: 10px 30px;
-            border-radius: 50px; /* شكل بيضاوي */
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: rgba(212, 175, 55, 0.05);
-            letter-spacing: 1px;
-        }
-
-        .website-btn:hover {
-            background: var(--gold-primary);
-            color: #000;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* --- أزرار اللغة --- */
-        .lang-switch {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 0 auto 20px;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--text-secondary);
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-family: inherit;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .lang-btn.active {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        /* --- شريط البحث --- */
-        .search-wrapper {
-            max-width: 550px;
-            margin: 0 auto 30px;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        #searchInput {
-            width: 100%;
-            padding: 15px 45px 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            color: var(--text-main);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        #searchInput:focus {
-            border-color: var(--gold-primary);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 35px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gold-primary);
-            opacity: 0.7;
-            pointer-events: none;
-        }
-        
-        html[dir="rtl"] .search-icon { right: 35px; left: auto; }
-
-        /* --- الحاوية --- */
-        .container {
-            max-width: 550px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- كرت الفرع --- */
-        .branch-card {
-            background: rgba(20, 20, 20, 0.7);
+            padding: 15px 10px 10px; /* تقليص المسافات */
+            background: rgba(0,0,0,0.95);
+            border-bottom: 1px solid #333;
+            position: sticky; top: 0; z-index: 1000;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            position: relative;
+        }
+        
+        /* Flex container to organize header elements neatly */
+        .header-top-row {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1000px; margin: 0 auto 10px; padding: 0 10px;
+        }
+
+        .logo-container {
+            width: 60px; height: 60px; /* تصغير اللوجو */
+            border-radius: 50%;
+            background: #000;
+            border: 1px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.6s forwards;
         }
+        .header-logo { width: 90%; height: auto; object-fit: contain; }
 
-        .branch-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            background: linear-gradient(to bottom, transparent, var(--gold-primary), transparent);
-            opacity: 0.7;
-        }
-
-        .branch-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .branch-name {
-            font-family: 'Tajawal', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .status-dot {
-            height: 6px;
-            width: 6px;
-            background-color: var(--gold-primary);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--gold-primary);
-        }
-
-        .hours-container {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .clock-icon {
-            color: var(--gold-primary);
-            font-size: 1.1rem;
-            margin-top: 2px;
-        }
-
-        .hours-text {
-            font-size: 0.85rem;
-            color: #ccc;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* --- الأزرار داخل الكرت --- */
-        .actions-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .btn-waze {
-            background: rgba(51, 204, 255, 0.1);
-            color: #33ccff;
-            border: 1px solid rgba(51, 204, 255, 0.3);
-        }
-        
-        .btn-call {
-            /* واتساب أخضر غامق */
-            background: linear-gradient(45deg, var(--whatsapp-green), var(--whatsapp-dark));
-            color: #fff;
-            border: none;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
-
-        /* --- الفوتر --- */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-bottom: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 30px;
-        }
-
-        .social-title {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            color: var(--gold-primary);
-            text-decoration: none;
-        }
-
-        .social-icon svg { width: 20px; height: 20px; fill: currentColor; }
-
-        .social-icon:hover {
-            background: var(--gold-primary);
+        /* Luxury Visit Button */
+        .btn-visit-site {
+            background: var(--gold-gradient);
             color: #000;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-        }
-
-        .copyright {
-            font-size: 0.75rem;
-            color: #444;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* --- زر الخدمة العائم --- */
-        .sticky-hotline {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 500px;
-            background: rgba(20, 20, 20, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--gold-primary);
-            padding: 12px 20px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 9999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-
-        .sticky-hotline:active { transform: translateX(-50%) scale(0.98); }
-
-        .hotline-text {
-            color: var(--text-main);
-            font-size: 0.9rem;
+            padding: 8px 15px;
+            border-radius: 4px; /* زوايا حادة قليلاً للفخامة */
+            font-size: 0.8rem;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            transition: transform 0.2s;
+            border: none;
+            display: inline-flex; align-items: center; gap: 5px;
+        }
+        .btn-visit-site:active { transform: scale(0.95); }
+
+        /* Minimalist Lang Switch */
+        .lang-switch { display: flex; gap: 15px; font-size: 0.9rem; }
+        .lang-btn {
+            background: none; border: none; color: #666; 
+            cursor: pointer; font-weight: bold; padding: 0;
+            transition: 0.3s; position: relative;
+        }
+        .lang-btn.active { color: var(--gold); }
+        .lang-btn.active::after {
+            content: ''; position: absolute; bottom: -3px; left: 0; width: 100%; height: 2px; background: var(--gold);
         }
 
-        .hotline-number {
-            color: var(--gold-primary);
-            font-family: 'Arial', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
+        /* Modern Search Bar */
+        .search-container { max-width: 600px; margin: 0 auto; position: relative; }
+        .search-input {
+            width: 100%; padding: 10px 40px 10px 15px;
+            background: #1a1a1a; 
+            border: 1px solid #333;
+            border-radius: 50px; 
+            color: #fff; font-size: 0.9rem;
+            box-sizing: border-box; outline: none; text-align: right;
+            transition: 0.3s;
+        }
+        .search-input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212, 175, 55, 0.1); }
+        .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--gold); }
+
+        /* === 3. BRANCH CARDS === */
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        
+        .branch-card {
+            background: var(--card-bg);
+            border-radius: 8px; /* Slightly sharper corners */
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #252525;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        .hotline-icon {
-            background: var(--gold-primary);
-            color: #000;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
+        .card-header {
+            display: flex; justify-content: flex-end; align-items: center; gap: 10px;
+            margin-bottom: 10px; cursor: pointer;
+        }
+        .card-title { font-size: 1.1rem; font-weight: bold; color: #fff; letter-spacing: 0.5px; }
+        .gold-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 5px var(--gold); }
+
+        .hours-box {
+            background: rgba(255,255,255,0.03); padding: 8px; border-radius: 4px;
+            text-align: right; color: #999; font-size: 0.8rem;
+            margin-bottom: 15px; display: flex; align-items: center; justify-content: flex-end; gap: 6px;
+            border-right: 2px solid var(--gold);
         }
 
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
+        .card-actions-wrapper { display: flex; flex-direction: column; gap: 8px; }
+        .contact-row { display: flex; gap: 8px; }
+
+        .action-btn {
+            flex: 1; padding: 10px; border-radius: 4px; text-align: center;
+            font-weight: bold; font-size: 0.85rem;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            transition: 0.2s; text-decoration: none; cursor: pointer; border: none;
         }
+        
+        /* New Shop Button Style */
+        .btn-shop { 
+            background: transparent; border: 1px solid var(--gold); color: var(--gold);
+            width: 100%; transition: 0.3s;
+        }
+        .btn-shop:hover { background: var(--gold); color: #000; }
+
+        .btn-waze { background: #1a2634; color: #33ccff; border: 1px solid rgba(51, 204, 255, 0.2); }
+        .btn-whatsapp { background: #132f20; color: #25D366; border: 1px solid rgba(37, 211, 102, 0.2); }
+
+        /* Service Bar */
+        .cs-bar {
+            background: linear-gradient(90deg, #111, #1a1a1a); 
+            border: 1px solid #333; border-radius: 50px;
+            padding: 8px 20px; display: flex; justify-content: space-between; align-items: center;
+            margin-top: 20px; text-decoration: none; margin-bottom: 40px;
+        }
+        .cs-text { color: #fff; font-size: 0.9rem; }
+        .cs-num { color: var(--gold); font-weight: bold; }
+
+        /* === 4. DETAIL VIEW === */
+        .detail-header-btn { margin-bottom: 15px; }
+        .back-link { 
+            color: #aaa; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; 
+            background: #222; padding: 5px 15px; border-radius: 20px;
+        }
+        .detail-hero {
+            text-align: center; margin-bottom: 25px;
+            background: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid #333;
+        }
+        
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+        .product-card { background: #fff; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+        .p-img-box { height: 160px; padding: 10px; display: flex; align-items: center; justify-content: center; background: #fff; }
+        .p-img { max-height: 100%; max-width: 100%; object-fit: contain; }
+        .p-info { padding: 12px; text-align: center; color: #333; flex-grow: 1; display: flex; flex-direction: column; }
+        .p-title { font-weight: bold; font-size: 0.85rem; margin-bottom: 5px; color: #000; flex-grow: 1; }
+        .p-price { color: #b8860b; font-weight: bold; margin-bottom: 10px; font-size: 0.95rem; }
+        
+        .btn-ask { 
+            background: #25D366; color: #fff; 
+            width: 100%; padding: 8px; border-radius: 4px; text-decoration: none; 
+            display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 0.8rem;
+            margin-top: auto; font-weight: bold;
+        }
+
+        .filters { display:flex; gap:8px; margin-bottom:15px; }
+        .filters select { flex:1; padding:10px; border-radius:6px; border:1px solid #444; background: #222; color: #fff; font-size: 0.9rem; }
+
+        .hidden { display: none !important; }
+        #loader { position: fixed; inset: 0; background: #000; z-index: 2000; display: flex; align-items: center; justify-content: center; color: var(--gold); }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="https://abomkdad.github.io/Digital-Business-Card/logo.png" alt="MAD PARFUMEUR" class="logo-img">
-        <div class="slogan">Luxury Niche Perfumes</div>
+<header>
+    <div class="header-top-row">
+        <a href="https://madperfume.co.il/" target="_blank" class="btn-visit-site">
+            <i class="fas fa-globe"></i> Website
+        </a>
 
-        <div class="website-btn-container">
-            <a href="#" target="_blank" id="mainWebsiteBtn" class="website-btn">
-                زيارة المتجر الإلكتروني 🌐
-            </a>
-        </div>
-    </header>
-
-    <div class="lang-switch">
-        <button class="lang-btn" onclick="switchLang('ar')" id="btn-ar">العربية</button>
-        <button class="lang-btn" onclick="switchLang('he')" id="btn-he">עברית</button>
-    </div>
-
-    <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="ابحث عن اسم المدينة..." onkeyup="filterBranches()">
-        <span class="search-icon">🔍</span>
-    </div>
-
-    <div class="container" id="branchesList">
+        <div class="logo-container">
+            <img src="https://abomkdad.github.io/Digital-Business-Card/logo.png" alt="MAD" class="header-logo">
         </div>
 
-    <footer>
-        <div class="social-title" id="socialTitle">Follow Us</div>
+        <div class="lang-switch">
+            <button class="lang-btn" id="btn-lang-ar" onclick="setLang('ar')">AR</button>
+            <button class="lang-btn" id="btn-lang-he" onclick="setLang('he')">HE</button>
+        </div>
+    </div>
+
+    <div id="search-wrapper" class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" class="search-input" placeholder="ابحث..." onkeyup="filterBranches()">
+    </div>
+</header>
+
+<div id="loader">LOADING...</div>
+
+<div class="container">
+
+    <div id="list-view">
+        <div id="branches-container"></div>
         
-        <div class="social-links">
-            <a href="https://madperfume.co.il/" target="_blank" class="social-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            </a>
-            <a href="https://www.tiktok.com/@mad.perfume" target="_blank" class="social-icon">
-                <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/perfume.mad/" target="_blank" class="social-icon">
-                <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"/></svg>
-            </a>
-            <a href="https://www.facebook.com/s0524033442/" target="_blank" class="social-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
-            </a>
+        <a href="tel:*9935" class="cs-bar">
+            <span class="cs-num">*9935</span>
+            <span class="cs-text">
+                <i class="fas fa-headset" style="margin-left:8px; color:var(--gold)"></i> خدمة الزبائن
+            </span>
+        </a>
+    </div>
+
+    <div id="detail-view" class="hidden">
+        <div class="detail-header-btn">
+            <div class="back-link" onclick="goHome()">
+                <i class="fas fa-arrow-right"></i> <span id="txt-back">عودة للفروع</span>
+            </div>
         </div>
 
-        <div class="copyright">© 2026 MAD PARFUMEUR</div>
-    </footer>
-
-    <a href="tel:*9935" class="sticky-hotline">
-        <div class="hotline-text">
-            <div class="hotline-icon">📞</div>
-            <span id="serviceText">Customer Service</span>
+        <div class="detail-hero">
+            <h2 id="d-title" style="margin:0; color:#fff; font-size:1.4rem;"></h2>
+            <div id="d-subtitle" style="color:var(--gold); margin-bottom:10px; font-size:0.9rem;"></div>
+            <div id="d-hours" style="color:#888; font-size:0.85rem;"></div>
         </div>
-        <div class="hotline-number">*9935</div>
-    </a>
 
-    <script>
-        // --- البيانات ---
-        const branches = [
-            // الشمال والساحل
-            { id: 12, nameAr: "حيفا", nameHe: "חיפה", phone: "0549634449⁩", directLink: "https://www.waze.com/en/live-map/directions/%D7%97%D7%99%D7%A4%D7%94?navigate=yes&place=99506.49&utm_campaign=default&utm_medium=lm_share_location&utm_source=waze_website", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 4, nameAr: "تل أبيب - يافا", nameHe: "תל אביב-יפו", phone: "0527035370", directLink: "https://ul.waze.com/ul?place=EipEYXZpZCBSYXppJ2VsIFN0IDIzLCBUZWwgQXZpdi1ZYWZvLCBJc3JhZWwiMBIuChQKEgntsiS-vkwdFREv7GII8cikqxAXKhQKEgmHZ_csvEwdFRFa3i1EzNr69g&ll=32.05510440%2C34.75639440&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location", hoursAr: "الأحد-الأربعاء: 10:00-22:00<br>الخميس-الجمعة: 10:00-00:00<br>السبت: 10:00-22:00", hoursHe: "א'-ד': 10:00-22:00<br>ה'-ו': 10:00-00:00<br>שבת: 10:00-22:00" },
-            { id: 3, nameAr: "الرمله", nameHe: "רמלה", phone: "0527035370", directLink: "https://www.waze.com/ul?ll=31.9260024,34.8763619&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-21:00<br>الجمعة: 09:00-18:00<br>السبت: 14:00-21:00", hoursHe: "א'-ה': 09:00-21:00<br>שישי: 09:00-18:00<br>שבת: 14:00-21:00" },
-            { id: 7, nameAr: "هيرتسيليا", nameHe: "הרצליה", phone: "0522438398", directLink: "https://waze.com/ul?q=Sokolov+14+Herzliya&navigate=yes", hoursAr: "الأحد-الخميس: 10:00-20:00<br>الجمعة 10 עד 3 والسبت: مغلق ", hoursHe: "א'-ה': 10:00-20:00<br>שישי 10 עד 3 ושבת: סגור " },
-            { id: 14, nameAr: "الخضيرة", nameHe: "חדרה", phone: "0523953681", directLink: "https://www.waze.com/ul?ll=32.4417243,34.8950613&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 24, nameAr: "يركا", nameHe: "ירכא", phone: "0546842420", directLink: "https://www.waze.com/ul?ll=32.947444,35.1740662&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 21, nameAr: "طمرة", nameHe: "טמרה", phone: "0505830733", directLink: "https://www.waze.com/ul?ll=32.8573682,35.1745076&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 23, nameAr: "جديدة المكر", nameHe: "ג׳דידה אלמכר", phone: "0508683838", directLink: "https://www.waze.com/ul?ll=32.9323979,35.1576085&navigate=yes", hoursAr: "يومياً: 11:00 - 21:00", hoursHe: "כל יום: 11:00 - 21:00" },
-            { id: 22, nameAr: "سخنين", nameHe: "סח'נין", phone: "0525335571", directLink: "https://www.waze.com/ul?ll=32.8620192,35.2982376&navigate=yes", hoursAr: "يومياً: 10:30 - 22:30", hoursHe: "כל יום: 10:30 - 22:30" },
-            { id: 2, nameAr: "كفر مندا", nameHe: "כפר מאנדא", phone: "0505102019", directLink: "https://ul.waze.com/ul?ll=32.80894429%2C35.26172519&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 1, nameAr: "دالية الكرمل", nameHe: "דלית אל כרמל", phone: "0525592293", directLink: "https://waze.com/ul?q=Kiwi%20store%20Daliyat%20al-Karmel&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
+        <div class="filters">
+            <select id="cat-select"></select>
+            <select id="sort-select">
+                <option value="">ترتيب افتراضي</option>
+                <option value="asc">السعر: من الأقل</option>
+                <option value="desc">السعر: من الأعلى</option>
+            </select>
+        </div>
 
-            // القدس
-            { id: 9, nameAr: "القدس - صلاح الدين", nameHe: "ירושלים - סלאח א-דין", phone: "0545697644", directLink: "https://www.waze.com/ul?ll=31.7838104,35.236511&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-19:30<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-19:30<br>שישי: סגור ❌" },
-            { id: 10, nameAr: "القدس - سلطان سليمان", nameHe: "ירושלים - סולטאן סולימאן", phone: "0545697644", directLink: "https://waze.com/ul?q=Sultan%20Suleiman%20St%20Jerusalem&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-19:30<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-19:30<br>שישי: סגור ❌" },
-            { id: 11, nameAr: "بيت حنينا", nameHe: "בית חנינא", phone: "0538318312", directLink: "https://ul.waze.com/ul?ll=31.84270095%2C35.22864819&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location", hoursAr: "الأحد-الخميس: 09:00-21:00<br>الجمعة: مغلق ❌", hoursHe: "א'-ה': 09:00-21:00<br>שישי: סגור ❌" },
+        <div id="products-grid" class="products-grid"></div>
+    </div>
 
-            // الجنوب
-            { id: 5, nameAr: "بئر السبع", nameHe: "באר שבע", phone: "0548809957", directLink: "https://www.waze.com/ul?ll=31.2454066,34.7994449&navigate=yes", hoursAr: "يومياً: 09:00 - 20:00", hoursHe: "כל השבוע: 09:00 - 20:00" },
-            { id: 6, nameAr: "رهط", nameHe: "רהט", phone: "0505841596", directLink: "https://www.waze.com/ul?ll=31.393133,34.7668897&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-20:00", hoursHe: "א'-ה': 09:00-20:00" },
+</div>
 
-            // المثلث
-            { id: 18, nameAr: "أم الفحم", nameHe: "אום אלפחם", phone: "0549634449⁩", directLink: "https://www.waze.com/ul?ll=32.5206069,35.1555539&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 19, nameAr: "العفولة", nameHe: "עפולה", phone: "0542144255", directLink: "https://www.waze.com/ul?ll=32.6115685,35.2868666&navigate=yes", hoursAr: "الأحد-الخميس: 09:00-22:00<br>السبت: مغلق ❌", hoursHe: "א'-ה': 09:00-22:00<br>שבת: סגור ❌" },
-            { id: 20, nameAr: "الناصرة", nameHe: "נצרת", phone: "0545307980", directLink: "https://www.waze.com/ul?ll=32.6954537,35.2980894&navigate=yes", hoursAr: "يومياً: 09:00 - 22:00", hoursHe: "כל השבוע: 09:00 - 22:00" },
-            { id: 15, nameAr: "باقة الغربية", nameHe: "באקה אלג׳רבייה", phone: "0536440073", directLink: "https://www.waze.com/ul?ll=32.4204461,35.0437769&navigate=yes", hoursAr: "يومياً: 10:00 - 23:00", hoursHe: "כל יום: 10:00 - 23:00" },
-            { id: 17, nameAr: "كفر قرع", nameHe: "כפר קרע", phone: "0549634449⁩", directLink: "https://www.waze.com/ul?ll=32.4984529,35.0644492&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 8, nameAr: "كفر قاسم", nameHe: "כפר קאסם", phone: "0522438398", directLink: "https://www.waze.com/ul?ll=32.1168851,34.9698127&navigate=yes", hoursAr: "يومياً: 11:00 - 23:00", hoursHe: "כל יום: 11:00 - 23:00" },
-            { id: 16, nameAr: "الطيبة", nameHe: "טייבה", phone: "0523953681", directLink: "https://www.waze.com/ul?q=Helmi%20Square%20Taibeh&navigate=yes", hoursAr: "يومياً: 10:00 - 23:00", hoursHe: "כל יום: 10:00 - 23:00" },
+<script>
+    // === CONFIG ===
+    const URLS = { b: 'branches.csv', p: 'products.csv' };
+    let DATA = { b: [], p: [] };
+    let LANG = 'ar'; 
 
-            // آخرون
-            { id: 25, nameAr: "طبريا", nameHe: "טבריה", phone: "046112266", directLink: "https://www.waze.com/ul?ll=32.7878568,35.5393736&navigate=yes", hoursAr: "يومياً: 09:00 - 21:00<br>السبت: مغلق ❌", hoursHe: "כל השבוע: 09:00 - 21:00<br>שבת: סגור ❌" },
-            { id: 26, nameAr: "مجدل شمس - الجولان", nameHe: "מג'דל שמס - הגולן", phone: "0508514202", directLink: "https://www.waze.com/ul?ll=33.2669846,35.7671611&navigate=yes", hoursAr: "يومياً: 12:00 - 21:00", hoursHe: "כל יום: 12:00 - 21:00" },
-            { id: 13, nameAr: "بقعاثا - الجولان", nameHe: "בקעאתה - הגולן", phone: "0508514202", directLink: "https://www.google.com/maps?q=33.199710845947266,35.77457809448242&z=17&hl=ar", hoursAr: "يومياً: 12:00 - 21:00", hoursHe: "כל יום: 12:00 - 21:00" },
-            
-            // الضفة الغربية
-            { id: 29, nameAr: "رام الله - الأيكون مول", nameHe: "ראמאללה - קניון אייקון", phone: "0592592502", directLink: "https://maps.app.goo.gl/NEAY2wMbBYRh7WDx9", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 291, nameAr: "رام الله - شارع الإرسال (مقابل KFC)", nameHe: "ראמאללה - רחוב אל-אירסאל (מול KFC)", phone: "0592592502", directLink: "https://waze.com/ul?q=KFC%20Al-Irsal%20Ramallah&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 27, nameAr: "نابلس - بيت وزن", nameHe: "שכם - בית וזן", phone: "0598094672", directLink: "https://waze.com/ul?q=Beit%20Wazan%20Nablus&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 271, nameAr: "نابلس - شارع يافا", nameHe: "שכם - רחוב יפו", phone: "0598094672", directLink: "https://waze.com/ul?q=Jaffa%20Street%20Nablus&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 272, nameAr: "نابلس - سيتي مول", nameHe: "שכם - סיטי מול", phone: "0598094672", directLink: "https://waze.com/ul?q=Nablus%20City%20Mall&navigate=yes", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל השבוע: 10:00 - 22:00" },
-            { id: 31, nameAr: "قلقيلية - شارع التربية (مقابل مؤسسة مهنا)", nameHe: "קלקוליה - רחוב החינוך (מול מוסד מהנא)", phone: "0595800150", directLink: "https://waze.com/ul?q=Mahanna%20Store%20Qalqilya&navigate=yes", hoursAr: "10:00-22:00 | الجمعة: 10:00-18:00", hoursHe: "10:00-22:00 | שישי: עד 18:00" },
-            { id: 28, nameAr: " - مركز المدينه- طولكرم", nameHe: "טול כרם", phone: "0595552670", waze: "Mad Perfume Tulkarm", hoursAr: "10:00-20:00 | الجمعة: 10:00-18:00", hoursHe: "10:00-20:00 | שישי: עד 18:00" },
-            { id: 30, nameAr: " صابات مول - بيت لحم", nameHe: "בית לחם", phone: "0599353940", waze: "Mad Perfume Bethlehem", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" },
-            { id: 32, nameAr: " دوار مركز- البلد أريحا", nameHe: "יריחו", phone: "0592592502", waze: "Mad Perfume Jericho", hoursAr: "يومياً: 10:00 - 22:00", hoursHe: "כל יום: 10:00 - 22:00" }
-        ];
+    // === TRANSLATIONS ===
+    const T = {
+        ar: { placeholder: "ابحث عن المدينة...", back: "عودة للقائمة", daily: "يومياً", waze: "WAZE", wa: "WhatsApp", shop_btn: "تسوق من الفرع", check_stock: "افحص التوفر", all_cats: "كل الفئات" },
+        he: { placeholder: "חפש עיר...", back: "חזרה לרשימה", daily: "יומי", waze: "WAZE", wa: "WhatsApp", shop_btn: "קנה מהסניף", check_stock: "בדוק זמינות", all_cats: "כל הקטגוריות" }
+    };
 
-        const uiText = {
-            ar: {
-                waze: "ملاحة WAZE",
-                call: "واتساب الفرع",
-                slogan: "عطور نيش فاخرة",
-                socialTitle: "تابعونا على",
-                serviceText: "خدمة الزبائن",
-                font: "'Cairo', sans-serif",
-                searchPlaceholder: "ابحث عن اسم المدينة...",
-                waMessage: "مرحباً، تواصلت معكم عبر قائمة الفروع في الموقع. أود الاستفسار بخصوص...",
-                // نصوص زر الموقع
-                siteText: "زيارة الموقع الإلكتروني 🌐",
-                siteUrl: "https://madperfume.ps/"
-            },
-            he: {
-                waze: "נווט ב-WAZE",
-                call: "וואטסאפ לסניף",
-                slogan: "בשמי נישה יוקרתיים",
-                socialTitle: "עקבו אחרינו",
-                serviceText: "שירות לקוחות",
-                font: "'Tajawal', sans-serif",
-                searchPlaceholder: "חפש לפי שם עיר...",
-                waMessage: "היי, הגעתי דרך רשימת הסניפים באתר. אשמח לברר לגבי...",
-                // نصوص زر الموقع
-                siteText: "למעבר לאתר הרשמי 🌐",
-                siteUrl: "https://madperfume.co.il/"
-            }
-        };
-
-        function init() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const defaultLang = userLang.includes('he') ? 'he' : 'ar';
-            switchLang(defaultLang);
+    // === INIT ===
+    async function init() {
+        const p = new URLSearchParams(location.search);
+        if(p.get('lang') === 'he') LANG = 'he';
+        else {
+             const browserLang = navigator.language || navigator.userLanguage;
+             if (browserLang && browserLang.startsWith('he')) LANG = 'he';
         }
+        updateLangUI();
 
-        // دالة تحويل الرقم للواتساب
-        function formatPhoneForWhatsapp(phone) {
-            let cleanPhone = phone.replace(/\D/g, '');
-            if (cleanPhone.startsWith('0')) {
-                cleanPhone = '972' + cleanPhone.substring(1);
-            }
-            return cleanPhone;
-        }
-
-        function switchLang(lang) {
-            const container = document.getElementById('branchesList');
-            container.innerHTML = ''; 
-
-            document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
-            document.getElementById('btn-he').classList.toggle('active', lang === 'he');
+        try {
+            const [rb, rp] = await Promise.all([fetchCSV(URLS.b), fetchCSV(URLS.p)]);
+            DATA = { b: rb, p: rp };
             
-            // تحديث النصوص
-            document.querySelector('.slogan').innerText = uiText[lang].slogan;
-            document.getElementById('socialTitle').innerText = uiText[lang].socialTitle;
-            document.getElementById('serviceText').innerText = uiText[lang].serviceText;
-            document.body.style.fontFamily = uiText[lang].font;
+            const id = p.get('id');
+            if(id) openBranch(id);
+            else renderList(DATA.b);
             
-            // تحديث شريط البحث
-            const searchInput = document.getElementById('searchInput');
-            searchInput.placeholder = uiText[lang].searchPlaceholder;
-            searchInput.value = ''; // تصفية البحث عند تغيير اللغة
+            document.getElementById('loader').classList.add('hidden');
+        } catch(e) { console.error(e); }
+    }
 
-            // --- تحديث زر الموقع الرسمي ---
-            const mainWebsiteBtn = document.getElementById('mainWebsiteBtn');
-            mainWebsiteBtn.innerText = uiText[lang].siteText;
-            mainWebsiteBtn.href = uiText[lang].siteUrl;
+    function fetchCSV(u) {
+        return new Promise(r => Papa.parse(u, { download:true, header:true, skipEmptyLines:true, transformHeader:h=>h.trim(), complete:x=>r(x.data) }));
+    }
 
-            // أيقونة واتساب
-            const whatsappIcon = `<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;vertical-align:middle;margin-inline-end:5px"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.698c1.005.572 1.903.87 3.05.87 3.183 0 5.77-2.587 5.769-5.766.001-3.182-2.585-5.769-5.769-5.769zm9.278 4.664c0-2.327-.905-4.514-2.551-6.16C17.111 3.03 14.925 2.124 12.6 2.124c-5.775 0-10.475 4.7-10.476 10.475 0 1.846.481 3.612 1.396 5.2l-1.486 5.426 5.556-1.458c1.527.832 3.25 1.272 4.98 1.272h.005c5.775 0 10.476-4.7 10.477-10.476 0-2.793-1.087-5.419-2.742-7.07z"/></svg>`;
+    function setLang(l) {
+        LANG = l;
+        const url = new URL(window.location);
+        url.searchParams.set('lang', l);
+        window.history.pushState({}, '', url);
+        updateLangUI();
+        renderList(DATA.b); 
+        const id = new URLSearchParams(location.search).get('id');
+        if(id) openBranch(id);
+    }
 
-            branches.forEach((branch, index) => {
-                const name = lang === 'he' ? branch.nameHe : branch.nameAr;
-                const hours = lang === 'he' ? branch.hoursHe : branch.hoursAr;
+    function updateLangUI() {
+        document.documentElement.lang = LANG;
+        document.documentElement.dir = LANG==='he'?'ltr':'rtl';
+        document.getElementById('btn-lang-ar').classList.toggle('active', LANG==='ar');
+        document.getElementById('btn-lang-he').classList.toggle('active', LANG==='he');
+        document.getElementById('search-input').placeholder = T[LANG].placeholder;
+        document.getElementById('txt-back').innerText = T[LANG].back;
+    }
+
+    // === LIST VIEW LOGIC ===
+    function renderList(list) {
+        const container = document.getElementById('branches-container');
+        container.innerHTML = '';
+
+        list.forEach(b => {
+            if(!b.ID) return;
+            
+            let name = LANG==='he' ? b['اسم الفرع عبري'] : b['اسم الفرع عربي'];
+            let hours = LANG==='he' ? (b['ساعات الدوام عبري']||b['ساعات الدوام عربي']) : (b['ساعات الدوام عربي']||b['ساعات الدوام عبري']);
+            let ph = (b['الهاتف']||'').replace(/\D/g,'').replace(/^0/,'972');
+            let waLink = b['WhatsApp'] || `https://wa.me/${ph}`;
+            let wazeLink = b['رابط Waze / Maps'] || '#';
+
+            const card = document.createElement('div');
+            card.className = 'branch-card';
+            card.innerHTML = `
+                <div class="card-header" onclick="nav('${b.ID}')">
+                    <span class="card-title">${name}</span>
+                    <span class="gold-dot"></span>
+                </div>
                 
-                let wazeLink = "";
-                if (branch.directLink) {
-                    wazeLink = branch.directLink;
-                } else {
-                    wazeLink = `https://waze.com/ul?q=${encodeURIComponent(branch.waze)}&navigate=yes`;
-                }
-                
-                const waNumber = formatPhoneForWhatsapp(branch.phone);
-                const message = encodeURIComponent(uiText[lang].waMessage);
-                const whatsappLink = `https://wa.me/${waNumber}?text=${message}`;
+                <div class="hours-box">
+                     ${hours} <i class="far fa-clock" style="color:var(--gold)"></i>
+                </div>
 
-                const delay = index * 0.05; 
+                <div class="card-actions-wrapper">
+                    <button onclick="nav('${b.ID}')" class="action-btn btn-shop">
+                        ${T[LANG].shop_btn} <i class="fas fa-shopping-bag"></i>
+                    </button>
 
-                const card = `
-                    <div class="branch-card" style="animation-delay: ${delay}s">
-                        <div class="branch-header">
-                            <div class="branch-name">${name}</div>
-                            <div class="status-dot"></div>
-                        </div>
-                        
-                        <div class="hours-container">
-                            <div class="clock-icon">◈</div>
-                            <div class="hours-text">${hours}</div>
-                        </div>
-
-                        <div class="actions-grid">
-                            <a href="${wazeLink}" target="_blank" class="btn btn-waze">
-                                <i style="font-style:normal">↗</i> ${uiText[lang].waze}
-                            </a>
-                            <a href="${whatsappLink}" target="_blank" class="btn btn-call">
-                                ${whatsappIcon} ${uiText[lang].call}
-                            </a>
-                        </div>
+                    <div class="contact-row">
+                        <a href="${wazeLink}" target="_blank" class="action-btn btn-waze">
+                            ${T[LANG].waze} <i class="fas fa-location-arrow"></i>
+                        </a>
+                        <a href="${waLink}" target="_blank" class="action-btn btn-whatsapp">
+                            ${T[LANG].wa} <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
-                `;
-                container.innerHTML += card;
-            });
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function filterBranches() {
+        const term = document.getElementById('search-input').value.toLowerCase();
+        const filtered = DATA.b.filter(b => {
+            const nAr = (b['اسم الفرع عربي']||'').toLowerCase();
+            const nHe = (b['اسم الفرع عبري']||'').toLowerCase();
+            return nAr.includes(term) || nHe.includes(term);
+        });
+        renderList(filtered);
+    }
+
+    // === DETAIL VIEW LOGIC ===
+    function nav(id) {
+        const url = new URL(window.location);
+        url.searchParams.set('id', id);
+        window.history.pushState({}, '', url);
+        openBranch(id);
+    }
+
+    function goHome() {
+        const url = new URL(window.location);
+        url.searchParams.delete('id');
+        window.history.pushState({}, '', url);
+        document.getElementById('detail-view').classList.add('hidden');
+        document.getElementById('list-view').classList.remove('hidden');
+        document.getElementById('search-wrapper').classList.remove('hidden');
+        window.scrollTo(0,0);
+    }
+
+    let currentProducts = [];
+    let currentBranchPhone = '';
+
+    function openBranch(id) {
+        const b = DATA.b.find(x => x.ID == id);
+        if(!b) { goHome(); return; }
+
+        document.getElementById('list-view').classList.add('hidden');
+        document.getElementById('search-wrapper').classList.add('hidden');
+        document.getElementById('detail-view').classList.remove('hidden');
+
+        if(LANG === 'he') {
+            document.getElementById('d-title').innerText = b['اسم الفرع عبري'];
+            document.getElementById('d-subtitle').innerText = b['اسم الفرع عربي'];
+            document.getElementById('d-hours').innerText = b['ساعات الدوام عبري']||'';
+        } else {
+            document.getElementById('d-title').innerText = b['اسم الفرع عربي'];
+            document.getElementById('d-subtitle').innerText = b['اسم الفرع عبري'];
+            document.getElementById('d-hours').innerText = b['ساعات الدوام عربي']||'';
         }
 
-        // دالة البحث المحسنة
-        function filterBranches() {
-            const input = document.getElementById('searchInput');
-            if(!input) return;
+        currentBranchPhone = (b['الهاتف']||'').replace(/\D/g,'').replace(/^0/,'972');
+
+        // ALWAYS SHOW ALL PRODUCTS
+        currentProducts = DATA.p.filter(x => x['Title']);
+        
+        updateFilters();
+    }
+
+    function updateFilters() {
+        const cats = [...new Set(currentProducts.map(x => x['Category (g:product_type)']).filter(Boolean))];
+        const sel = document.getElementById('cat-select');
+        sel.innerHTML = `<option value="">${T[LANG].all_cats}</option>`;
+        cats.forEach(c => sel.innerHTML += `<option>${c}</option>`);
+        
+        sel.onchange = renderProducts;
+        document.getElementById('sort-select').onchange = renderProducts;
+        renderProducts();
+    }
+
+    function renderProducts() {
+        const grid = document.getElementById('products-grid');
+        grid.innerHTML = '';
+        
+        const cat = document.getElementById('cat-select').value;
+        const sort = document.getElementById('sort-select').value;
+
+        let list = currentProducts.filter(x => !cat || x['Category (g:product_type)'] === cat);
+        
+        if(sort === 'asc') list.sort((a,b) => parseFloat(a.Price)-parseFloat(b.Price));
+        if(sort === 'desc') list.sort((a,b) => parseFloat(b.Price)-parseFloat(a.Price));
+
+        list.slice(0, 50).forEach(p => {
+            let img = (p.Image||'').split('|')[0] || 'https://via.placeholder.com/200';
             
-            const filter = input.value.trim().toUpperCase();
-            const container = document.getElementById('branchesList');
-            const cards = container.getElementsByClassName('branch-card');
+            // WA: Check Availability
+            let msg = LANG==='he' 
+                ? `שלום, האם הבושם ${p.Title} זמין בסניף?` 
+                : `مرحباً، هل العطر ${p.Title} متوفر في الفرع؟`;
+            let waLink = `https://wa.me/${currentBranchPhone}?text=${encodeURIComponent(msg)}`;
 
-            for (let i = 0; i < cards.length; i++) {
-                const branchNameDiv = cards[i].getElementsByClassName('branch-name')[0];
-                if (branchNameDiv) {
-                    const txtValue = branchNameDiv.textContent || branchNameDiv.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        cards[i].style.display = "";
-                    } else {
-                        cards[i].style.display = "none";
-                    }
-                }
-            }
-        }
+            grid.innerHTML += `
+                <div class="product-card">
+                    <div class="p-img-box"><img src="${img}" class="p-img" loading="lazy"></div>
+                    <div class="p-info">
+                        <div class="p-title">${p.Title}</div>
+                        <div class="p-price">${p.Price} ₪</div>
+                        <a href="${waLink}" target="_blank" class="btn-ask">
+                            <i class="fab fa-whatsapp"></i> ${T[LANG].check_stock}
+                        </a>
+                    </div>
+                </div>
+            `;
+        });
+    }
 
-        init();
-    </script>
+    init();
+</script>
+
 </body>
 </html>
-
-```
